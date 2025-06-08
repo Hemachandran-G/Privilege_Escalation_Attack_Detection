@@ -36,5 +36,7 @@ urlpatterns = [
     path('train_model/', serviceprovider.train_model, name="train_model"),
     path('View_Predicted_Escalation_Attack_Detection_Details/', serviceprovider.View_Predicted_Escalation_Attack_Detection_Details, name="View_Predicted_Escalation_Attack_Detection_Details"),
     path('Download_Trained_DataSets/', serviceprovider.Download_Trained_DataSets, name="Download_Trained_DataSets"),
+     path('edit-client/<int:id>/', remoteuser.edit_client, name='edit_client'),
+    path('delete-client/<int:id>/', remoteuser.delete_client, name='delete_client'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,111 +1,151 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-
 {% load static %}
-
 <!DOCTYPE html>
-
 <html lang="en">
 
-	<title>Register Your Details</title>
+<head>
+    <title>Register Your Details</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
-	    <style type="text/css">
-<!--
-.style1 {
-	color: #FF0000;
-	font-weight: bold;
-}
--->
-        </style>
-	    <head>
+    <!-- Custom Styling -->
+    <style>
+        body {
+            background: url("{% static 'bg.jpg' %}") no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+        }
 
+        .container {
+            background-color: rgba(44, 47, 51, 0.9);
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.1);
+        }
 
+        h2 {
+            text-align: center;
+            color: #ffc107;
+            font-weight: bold;
+        }
 
-	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 1px solid #ffc107;
+            background-color: #2c2f33;
+            color: white;
+        }
 
+        .btn-primary {
+            background-color: #ffc107;
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+        }
 
+        .btn-primary:hover {
+            background-color: #ffdd57;
+        }
 
-		<style>
-			body {background: url("{% static 'bg.jpg' %}");
-			}
-			.container-fluid {padding:50px;}
-			.container{background-color:white;padding:50px;   }
-			#title{font-family: 'Fredoka One', cursive;
-}
-			.text-uppercase{
-			font-family: 'Righteous', cursive;
+        .login-link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 16px;
+        }
 
-			}
-        </style>
-	</head>
-	<body>
-	<div class="container-fluid">
-		<div>
-			<h2 class="text-center style1" id="title">EMAIL – BASED PRIVILEGE ESCALATION ATTACK DETECTION USING MACHINE LEARNING IN CLOUD SECURITY
-</h2>
-			 <p class="text-center">
-				<span class="style1"><small id="passwordHelpInline" class="text-muted">Privilege escalation, insider attack, machine learning, random forest, adaboost, XGBoost,
-LightGBM, classification...</small></span></p>
-			 <hr>
-			<div class="row">
-				<div class="col-md-5">
- 					<form role="form" method="POST" >
-						{% csrf_token %}
-						<fieldset>
-                            {% load static %}
-						<img src="{% static '/Register.jpg' %}" alt="My image"><br>
-						<span class="style1">REGISTER YOUR DETAILS HERE !!!						</span>
-						<div class="form-group">
-								<input type="text" name="username" id="username"  placeholder="User Name" required>
-						</div>
+        .login-link a {
+            color: #ffc107;
+            font-weight: bold;
+            text-decoration: none;
+        }
 
-							<div class="form-group">
-								<input type="email" name="email" id="email"  placeholder="Email Address" required>
-							</div>
-							<div class="form-group">
-								<input type="password" name="password" id="password"  placeholder="Password" required>
-							</div>
-								<div class="form-group">
-								<input type="number" name="phoneno" id="phoneno"  placeholder="Mobile Number" required>
-							</div>
-							<div class="form-group">
-								<input type="text" name="country" id="country"  placeholder="Country" required>
-							</div>
-							<div class="form-group">
-								<input type="text" name="state" id="state"  placeholder="State" required>
-							</div>
-							<div class="form-group">
-								<input type="text" name="city" id="city"  placeholder="City" required>
-							</div>
+        .login-link a:hover {
+            text-decoration: underline;
+        }
 
+        .image-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-						<div class="form-check">
-						  <label class="form-check-label"></label>
-						</div>
- 							<div>
- 									  <input type="submit" class="btn btn-lg btn-primary" name="submit"  value="Register" >
- 							</div>
-					  </fieldset>
-						<div><br>
-						  <button class="btn btn-lg "><a href="{% url 'login' %}">User Login</a></button>
-					  </div>
-					</form>
-				</div>
+        .image-container img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+    </style>
+</head>
 
-				<div class="col-md-2">
-					<!-------null------>
-				</div>
+<body>
+    <div class="container mt-5">
+        <h2>Privilege Escalation Attack Detection</h2>
+        <p class="text-center"><small>Using Machine Learning (Random Forest, XGBoost, LightGBM, etc.)</small></p>
+        <hr>
 
-				<div class="col-md-5">				</div>
-			</div>
-		</div>
+        <div class="row">
+            <!-- <div class="col-md-6">
+                <div class="image-container">
+                    <img src="{% static 'Register.jpg' %}" alt="Register Image">
+                </div>
+            </div> -->
+            <div class="col-sm-3"></div>
+            <div class="col-md-6">
+                <form method="POST">
+                    {% csrf_token %}
+                    
+                    <div class="form-group">
+                        <input type="text" name="username" placeholder="User Name" required>
+                    </div>
 
-	</div>
-	</body>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Email Address" required>
+                    </div>
 
+                    <div class="form-group">
+                        <input type="password" name="password" placeholder="Password" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="number" name="phoneno" placeholder="Mobile Number" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" name="country" placeholder="Country" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" name="state" placeholder="State" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" name="city" placeholder="City" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Register</button>
+
+                    <div class="login-link">
+                        <a href="{% url 'login' %}">Already have an account? Login</a>
+                    </div>
+                </form>
+            </div>
+			<div class="col-sm-3"></div>
+        </div>
+    </div>
+</body>
 
 </html>

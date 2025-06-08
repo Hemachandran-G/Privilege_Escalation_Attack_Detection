@@ -52,7 +52,7 @@ def Register1(request):
         ClientRegister_Model.objects.create(username=username, email=email, password=password, phoneno=phoneno,
                                             country=country, state=state, city=city)
 
-        return render(request, 'RUser/Register1.html')
+        return redirect('login')
     else:
         return render(request,'RUser/Register1.html')
 
@@ -60,6 +60,28 @@ def ViewYourProfile(request):
     userid = request.session['userid']
     obj = ClientRegister_Model.objects.get(id= userid)
     return render(request,'RUser/ViewYourProfile.html',{'object':obj})
+
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import ClientRegister_Model
+
+def edit_client(request, id):
+    client = get_object_or_404(ClientRegister_Model, id=id)
+    if request.method == 'POST':
+        client.username = request.POST.get('username')
+        client.email = request.POST.get('email')
+        client.phoneno = request.POST.get('phoneno')
+        client.country = request.POST.get('country')
+        client.state = request.POST.get('state')
+        client.city = request.POST.get('city')
+        client.save()
+        return redirect('View_Remote_Users')  # Replace with your actual view name
+    return redirect('View_Remote_Users')
+
+def delete_client(request, id):
+    client = get_object_or_404(ClientRegister_Model, id=id)
+    if request.method == 'POST':
+        client.delete()
+    return redirect('View_Remote_Users')  # Replace with your actual view name
 
 
 def Predict_Escalation_Attack_Detection(request):
@@ -174,10 +196,13 @@ def Predict_Escalation_Attack_Detection(request):
         print(prediction)
         print(val)
 
+        user = ClientRegister_Model.objects.get(id=request.session['userid'])
+
         escalation_attack_detection.objects.create(
-        subject=subject,
-        email_message=email_message,
-        Prediction=val)
+            user=user,
+            subject=subject,
+            email_message=email_message,
+            Prediction=val)
 
         return render(request, 'RUser/Predict_Escalation_Attack_Detection.html',{'objs': val})
     return render(request, 'RUser/Predict_Escalation_Attack_Detection.html')
